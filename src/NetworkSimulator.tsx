@@ -196,10 +196,13 @@ const NetworkSimulator: React.FC = () => {
       .join('g');
     
     // Add drag behavior
-    node.call(d3.drag<SVGGElement, GraphNode>()
+    const drag = d3.drag<SVGGElement, GraphNode>()
       .on('start', dragstarted)
       .on('drag', dragged)
-      .on('end', dragended) as any);
+      .on('end', dragended);
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    node.call(drag as any);
 
     node.append('circle')
       .attr('r', 30)
