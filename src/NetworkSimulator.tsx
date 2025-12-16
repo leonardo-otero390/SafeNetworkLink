@@ -36,7 +36,7 @@ const NetworkSimulator: React.FC = () => {
   const addPerson = () => {
     if (newPersonName.trim()) {
       const newPerson: Person = {
-        id: `person-${Date.now()}`,
+        id: crypto.randomUUID(),
         name: newPersonName.trim()
       };
       setPeople([...people, newPerson]);
