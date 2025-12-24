@@ -7,7 +7,6 @@ import { AddRelationshipForm } from './components/AddRelationshipForm/AddRelatio
 import { VisualizationControl } from './components/VisualizationControl/VisualizationControl';
 import { PeopleList, RelationshipList } from './components/Lists/Lists';
 import { NetworkVisualization } from './components/NetworkVisualization/NetworkVisualization';
-import { DotCodeViewer } from './components/DotCodeViewer/DotCodeViewer';
 
 const NetworkSimulator: React.FC = () => {
   const [people, setPeople] = useState<Person[]>([]);
@@ -16,7 +15,6 @@ const NetworkSimulator: React.FC = () => {
   const [fromPerson, setFromPerson] = useState('');
   const [toPerson, setToPerson] = useState('');
   const [indexPerson, setIndexPerson] = useState('');
-  const [dotCode, setDotCode] = useState('');
   const [visualizationData, setVisualizationData] = useState<{
     nodes: GraphNode[];
     links: GraphLink[];
@@ -48,33 +46,29 @@ const NetworkSimulator: React.FC = () => {
     // Use NetworkService to calculate distances
     const distances = NetworkService.calculateDistances(indexPerson, relationships);
     
-    // Generate DOT code using service
-    const dot = NetworkService.generateDotCode(people, distances, relationships);
-    setDotCode(dot);
-
     // Prepare visualization data using service
     const vizData = NetworkService.prepareVisualizationData(people, relationships, distances);
     setVisualizationData(vizData);
   };
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          NÃO MONO - Network Relationship Visualizer
+    <Container maxWidth="xl" sx={{ py: 2 }}>
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          NÃO MONO - Visualizador de Rede Social
         </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Anonymous STI signaling via network visualization (Distance 2 = Critical Alert)
+        <Typography variant="body2" color="text.secondary">
+          Visualização de relações de rede (Distância 2 = Alerta Crítico)
         </Typography>
       </Box>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {/* Input Section */}
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Stack spacing={3}>
+        <Grid size={{ xs: 12, md: 5 }}>
+          <Stack spacing={2}>
             <Paper elevation={2} sx={{ p: 2 }}>
               <Typography variant="h6" gutterBottom>
-                Add Person
+                Adicionar Pessoa
               </Typography>
               <AddPersonForm
                 newPersonName={newPersonName}
@@ -85,7 +79,7 @@ const NetworkSimulator: React.FC = () => {
 
             <Paper elevation={2} sx={{ p: 2 }}>
               <Typography variant="h6" gutterBottom>
-                Add Relationship
+                Adicionar Relacionamento
               </Typography>
               <AddRelationshipForm
                 people={people}
@@ -99,7 +93,7 @@ const NetworkSimulator: React.FC = () => {
 
             <Paper elevation={2} sx={{ p: 2 }}>
               <Typography variant="h6" gutterBottom>
-                Visualize Network
+                Visualizar Rede
               </Typography>
               <VisualizationControl
                 people={people}
@@ -116,15 +110,11 @@ const NetworkSimulator: React.FC = () => {
         </Grid>
 
         {/* Visualization Section */}
-        <Grid size={{ xs: 12, md: 8 }}>
-          <Stack spacing={3}>
-            <NetworkVisualization
-              nodes={visualizationData.nodes}
-              links={visualizationData.links}
-            />
-            
-            <DotCodeViewer dotCode={dotCode} />
-          </Stack>
+        <Grid size={{ xs: 12, md: 7 }}>
+          <NetworkVisualization
+            nodes={visualizationData.nodes}
+            links={visualizationData.links}
+          />
         </Grid>
       </Grid>
     </Container>

@@ -112,16 +112,15 @@ export const NetworkVisualization: React.FC<NetworkVisualizationProps> = ({ node
   }, [nodes, links]);
 
   return (
-    <Paper elevation={3} sx={{ p: 2 }}>
-      <Typography variant="h6" gutterBottom>
-        Network Visualization (D3.js)
-      </Typography>
-      <Box sx={{ bgcolor: '#f9f9f9', border: '1px solid #ddd', borderRadius: 1 }}>
+    <Paper elevation={2} sx={{ p: 0, bgcolor: '#fafafa' }}>
+      <Box sx={{ overflow: 'auto' }}>
         <svg ref={svgRef} style={{ display: 'block' }}></svg>
       </Box>
-      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-        <strong>Legend:</strong> 🔵 Index (D0) | 🟡 Distance 1 | 🔴 CRITICAL ALERT Distance 2
-      </Typography>
+      <Box sx={{ p: 2, bgcolor: '#fff', borderTop: '1px solid #eee' }}>
+        <Typography variant="caption" color="text.secondary">
+          <strong>Legenda:</strong> 🔵 Pessoa-índice | 🟡 Distância 1 | 🔴 ALERTA CRÍTICO (Distância 2)
+        </Typography>
+      </Box>
     </Paper>
   );
 };

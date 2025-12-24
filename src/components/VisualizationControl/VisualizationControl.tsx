@@ -18,14 +18,14 @@ export const VisualizationControl: React.FC<VisualizationControlProps> = ({
   return (
     <Stack direction="row" spacing={2} alignItems="center">
       <FormControl size="small" fullWidth>
-        <InputLabel>Index Person</InputLabel>
+        <InputLabel>Pessoa Índice</InputLabel>
         <Select
           value={indexPerson}
           onChange={(e) => onIndexPersonChange(e.target.value)}
-          label="Index Person"
+          label="Pessoa Índice"
         >
           <MenuItem value="">
-            <em>Select index person</em>
+            <em>Selecionar pessoa</em>
           </MenuItem>
           {people.map(p => (
             <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
@@ -39,7 +39,7 @@ export const VisualizationControl: React.FC<VisualizationControlProps> = ({
         onClick={onVisualize}
         disabled={!indexPerson}
       >
-        Generate Network
+        Gerar Rede
       </Button>
     </Stack>
   );

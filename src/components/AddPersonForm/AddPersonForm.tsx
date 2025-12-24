@@ -21,7 +21,7 @@ export const AddPersonForm: React.FC<AddPersonFormProps> = ({
   return (
     <Stack direction="row" spacing={2} alignItems="center">
       <TextField
-        label="Person name"
+        label="Nome da pessoa"
         value={newPersonName}
         onChange={(e) => onNameChange(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -33,7 +33,7 @@ export const AddPersonForm: React.FC<AddPersonFormProps> = ({
         onClick={onAddPerson}
         disabled={!newPersonName.trim()}
       >
-        Add Person
+        Adicionar
       </Button>
     </Stack>
   );

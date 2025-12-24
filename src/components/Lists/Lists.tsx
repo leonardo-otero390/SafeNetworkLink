@@ -10,13 +10,13 @@ export const PeopleList: React.FC<PeopleListProps> = ({ people }) => {
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
       <Typography variant="h6" gutterBottom>
-        People ({people.length})
+        Pessoas ({people.length})
       </Typography>
       <Divider sx={{ mb: 1 }} />
       <List dense>
         {people.length === 0 ? (
           <ListItem>
-            <ListItemText secondary="No people added yet" />
+            <ListItemText secondary="Nenhuma pessoa adicionada" />
           </ListItem>
         ) : (
           people.map(p => (
@@ -41,13 +41,13 @@ export const RelationshipList: React.FC<RelationshipListProps> = ({ relationship
   return (
     <Paper elevation={2} sx={{ p: 2 }}>
       <Typography variant="h6" gutterBottom>
-        Relationships ({relationships.length})
+        Relacionamentos ({relationships.length})
       </Typography>
       <Divider sx={{ mb: 1 }} />
       <List dense>
         {relationships.length === 0 ? (
           <ListItem>
-            <ListItemText secondary="No relationships added yet" />
+            <ListItemText secondary="Nenhum relacionamento adicionado" />
           </ListItem>
         ) : (
           relationships.map((r) => (

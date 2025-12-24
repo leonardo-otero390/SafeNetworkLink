@@ -22,14 +22,14 @@ export const AddRelationshipForm: React.FC<AddRelationshipFormProps> = ({
   return (
     <Stack direction="row" spacing={2} alignItems="center">
       <FormControl size="small" fullWidth>
-        <InputLabel>From</InputLabel>
+        <InputLabel>De</InputLabel>
         <Select
           value={fromPerson}
           onChange={(e) => onFromPersonChange(e.target.value)}
-          label="From"
+          label="De"
         >
           <MenuItem value="">
-            <em>Select person</em>
+            <em>Selecionar pessoa</em>
           </MenuItem>
           {people.map(p => (
             <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
@@ -38,14 +38,14 @@ export const AddRelationshipForm: React.FC<AddRelationshipFormProps> = ({
       </FormControl>
       
       <FormControl size="small" fullWidth>
-        <InputLabel>To</InputLabel>
+        <InputLabel>Para</InputLabel>
         <Select
           value={toPerson}
           onChange={(e) => onToPersonChange(e.target.value)}
-          label="To"
+          label="Para"
         >
           <MenuItem value="">
-            <em>Select person</em>
+            <em>Selecionar pessoa</em>
           </MenuItem>
           {people.map(p => (
             <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>
@@ -58,7 +58,7 @@ export const AddRelationshipForm: React.FC<AddRelationshipFormProps> = ({
         onClick={onAddRelationship}
         disabled={!fromPerson || !toPerson || fromPerson === toPerson}
       >
-        Add Relationship
+        Adicionar
       </Button>
     </Stack>
   );
